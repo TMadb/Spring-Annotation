@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+      <!-- 自动扫包 -->  
+<!--   <context:component-scan base-package="com.org.entity" /> -->
+  
+  <!-- String和基本类型使用value，引用类型使用ref -->
+  <bean id="car1" class="com.org.entity.Car">
+  	 <property name="cid" value="1"></property>
+  	 <property name="cname" value="名爵"></property> 	
+  </bean>
+  <bean id="car2" class="com.org.entity.Car">
+  	 <property name="cid" value="2"></property>
+  	 <property name="cname" value="天子驾二"></property>
+  </bean>
+  <bean id="carlist" class="com.org.entity.CarList">
+  	  <!--  String[] strings; -->
+  	 <property name="strings">
+  	   <array>
+  	     <value>大天幕</value>
+  	     <value>原厂改装车</value>
+  	   </array>
+  	 </property>
+  	 
+  	 <!--  Car[] cars; -->
+  	 <property name="cars">
+  	   <array>
+  	     <ref bean="car2" />
+  	   </array>
+  	 </property>
+  	 
+  	 <!-- List<String> cList -->
+  	 <property name="cList">
+  	   <list>
+  	    <value>真的特别棒</value>
+  	    <value>油耗低</value>
+  	   </list>
+  	 </property>
+  	 
+  	 <!-- List<Car> carlist -->
+  	 <property name="carlist">
+  	   <list>
+  	    <ref bean="car1" />
+  	    <ref bean="car2" />
+  	   </list>
+  	 </property>
+  	 
+  	 <!-- Map<String,String> cMap -->
+  	 <property name="cMap">
+  	   <map>
+  	    <entry key="a" value="英伦绅士风" />  	   
+  	    <entry key="b" value="皇家贵族血统" />  	   
+  	   </map> 	  	   
+  	 </property>
+  	 
+  	 <!-- Map<String,Car> carMap -->
+  	 <property name="carMap">
+  	   <map>
+  	    <entry key="a" value-ref="car1"/>  	   
+  	    <entry key="b" value-ref="car2" />  	   
+  	   </map> 	  	   
+  	 </property>
+  	 
+  	 <!-- Set<String> cset -->
+  	 <property name="cset">
+  	   <!-- set赋值基本类型和String直接使用Value -->
+  	   <set>
+  	    <value>全新设计，尽显奢华</value>
+  	    <value>独立风骚，行业的领头羊</value>
+  	   </set> 	  	   
+  	 </property>
+  	 
+  	 <!-- Set<Car> carlset -->
+  	 <property name="carlset">
+  	   <!-- set赋值直接使用Value -->
+  	   <set>
+  	     <ref bean="car1" />
+  	     <ref bean="car2" />
+  	   </set> 	  	   
+  	 </property>
+  	 
+  	 <!-- Properties properties -->
+  	 <property name="properties">
+  	   <!-- properfties赋值直接使用prop -->
+  	    <props>
+  	     <prop key="e">大众的选择</prop>
+  	     <prop key="f">错不了</prop>
+  	    </props>	   
+  	 </property>
+  	 
+  	 <!-- List<Properties> plist -->
+  	 <!-- <property name="plist">
+  	   properfties赋值直接使用prop
+  	    <list>
+  	     <props> 	    
+	  	     <prop key="aaa">大众的选择</prop>
+	  	     <prop key="bbb">错不了</prop> 	  
+  	     </props>
+  	    </list>	   
+  	 </property> -->
+  </bean>
+</beans>
