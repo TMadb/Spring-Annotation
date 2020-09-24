@@ -19,7 +19,7 @@ public class CarTest {
 		//使用SpringApi进行解耦
 		ApplicationContext api = new ClassPathXmlApplicationContext(parent); 
 		//注解方式配置的Bean在测试类中需要将类名首字母小写即可获取
-		Car car = (Car) api.getBean("car");
+		Car car = (Car) api.getBean("car1");
 		System.out.println(car);
 	}
 	
